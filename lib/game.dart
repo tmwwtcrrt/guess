@@ -3,19 +3,21 @@ import 'dart:math';
 //สร้างคลาส
 // camel case
 class Game {
-  int answer = 0;  //instance field
-  Game() {
+  int maxRandom = 0;//instance field
+  Game(maxRandom) {
+    var game = Game(maxRandom);
     var r = Random();
-    answer = r.nextInt(100) + 1;
-    //print('คำตอบคือ $answer');
+    maxRandom = r.nextInt(100) + 1;
+
+
   }
 
   int doGuess(int num){
-    if (num > answer){
+    if (num > maxRandom){
       print('║ ➜ $num is TOO HIGH! ▲');
       print('║──────────────────────────────────────────');
       return 0;
-    } else if(num < answer){
+    } else if(num < maxRandom){
       print('║ ➜ $num is TOO LOW! ▼');
       print('║──────────────────────────────────────────');
       return 0;
