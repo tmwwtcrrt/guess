@@ -3,7 +3,7 @@ import 'game.dart';
 
 int maxRandom = 0;
 void main() {
-  var game = Game(maxRandom);
+  var game = Game();
   int result = 0;
     stdout.write('║ Enter a maximum number to random: ');
     print('╔══════════════════════════════════════════');

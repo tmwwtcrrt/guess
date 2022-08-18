@@ -1,33 +1,42 @@
-import 'dart:io';
+//import 'dart:io';
 import 'dart:math';
-//สร้างคลาส
-// camel case
-class Game {
-  int maxRandom = 0;//instance field
-  Game(maxRandom) {
-    var game = Game(maxRandom);
+
+//import 'hello.dart';
+
+enum result{
+  tooHigh,
+  tooLow,
+  correct
+}
+
+class Game{        //ชื่อ class ใช้ตัวพิมพ์ใหญ่ตัวแรกเท่านั้น
+  static const defaultMaxRandom = 100;
+  int answer = 0;  //instance field
+  int count = 0;
+
+  Game({int? maxRandom}){             //{} แสดงให้รู้ว่า maxRandom เป็น main parameter
     var r = Random();
-    maxRandom = r.nextInt(100) + 1;
-
-
+    answer = r.nextInt(maxRandom!) + 1;   //สุ่มเลขตั้งแต่ 1-100
+    print('คำตอบคือ $answer');
   }
 
-  int doGuess(int num){
-    if (num > maxRandom){
+  int doGuess(int num){        //method
+    if(num > answer){
       print('║ ➜ $num is TOO HIGH! ▲');
-      print('║──────────────────────────────────────────');
+      print('╟────────────────────────────────────────────');
+      count++;
       return 0;
-    } else if(num < maxRandom){
+    } else if(num < answer){
       print('║ ➜ $num is TOO LOW! ▼');
-      print('║──────────────────────────────────────────');
+      print('╟────────────────────────────────────────────');
+      count++;
       return 0;
-    } else {
-      print('║ ➜ $num is CORRECT! ❤');
-      print('║──────────────────────────────────────────');
-      print('║              THE END');
-      print('╚══════════════════════════════════════════');
+    } else{
+      count++;
+      print('║ ➜ $num is CORRECT ❤️, Total guesses : $count');
+      print('╟────────────────────────────────────────────');
       return 1;
     }
   }
+
 }
-//hw ถามว่าเล่นต่อมั้ยตอบyes/no
